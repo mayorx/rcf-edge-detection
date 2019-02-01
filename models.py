@@ -1,5 +1,6 @@
 #resnet implement : https://github.com/pytorch/vision/tree/master/torchvision
 
+import torch
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 
@@ -114,6 +115,20 @@ class ResNet(nn.Module):
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc = nn.Linear(512 * block.expansion, num_classes)
 
+        self.C1_down_channel = nn.Conv2d(64, 21, 1)
+        self.C2_down_channel = nn.Conv2d(256, 21, 1)
+        self.C3_down_channel = nn.Conv2d(512, 21, 1)
+        self.C4_down_channel = nn.Conv2d(1024, 21, 1)
+        self.C5_down_channel = nn.Conv2d(2048, 21, 1)
+
+        self.score_dsn1 = nn.Conv2d(21, 1, 1)
+        self.score_dsn2 = nn.Conv2d(21, 1, 1)
+        self.score_dsn3 = nn.Conv2d(21, 1, 1)
+        self.score_dsn4 = nn.Conv2d(21, 1, 1)
+        self.score_dsn5 = nn.Conv2d(21, 1, 1)
+        self.score_final = nn.Conv2d(5, 1, 1)
+
+
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
@@ -147,22 +162,50 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def forward(self, x):
-        x = self.conv1(x)
+    def forward(self, x, size):
+        #x 1
+        x = self.conv1(x)  #1/2
         x = self.bn1(x)
         x = self.relu(x)
-        x = self.maxpool(x)
+        C1 = self.maxpool(x) #1/4
+        C2 = self.layer1(C1) #1/4
+        C3 = self.layer2(C2) #1/8
+        C4 = self.layer3(C3) #1/16
+        C5 = self.layer4(C4) #1/32
 
-        x = self.layer1(x)
-        x = self.layer2(x)
-        x = self.layer3(x)
-        x = self.layer4(x)
 
-        x = self.avgpool(x)
-        x = x.view(x.size(0), -1)
-        x = self.fc(x)
+        R1 = self.relu(self.C1_down_channel(C1))
+        R2 = self.relu(self.C2_down_channel(C2))
+        R3 = self.relu(self.C3_down_channel(C3))
+        R4 = self.relu(self.C4_down_channel(C4))
+        R5 = self.relu(self.C5_down_channel(C5))
 
-        return x
+        so1_out = self.score_dsn1(R1)
+        so2_out = self.score_dsn2(R2)
+        so3_out = self.score_dsn3(R3)
+        so4_out = self.score_dsn4(R4)
+        so5_out = self.score_dsn4(R5)
+
+        out1 = nn.UpsamplingBilinear2d(so1_out, size)
+        out2 = nn.UpsamplingBilinear2d(so2_out, size)
+        out3 = nn.UpsamplingBilinear2d(so3_out, size)
+        out4 = nn.UpsamplingBilinear2d(so4_out, size)
+        out5 = nn.UpsamplingBilinear2d(so5_out, size)
+
+        fuse = torch.cat([out1, out2, out3, out4, out5], dim=1)
+        final_out = self.score_final(fuse)
+
+        results = [out1, out2, out3, out4, out5, final_out]
+        results = [torch.sigmoid(r) for r in results]
+        return results
+
+        # fully-connected layer is not needed.
+        # x = self.avgpool(x)
+        # print('x .. 7', x.size())
+        # x = x.view(x.size(0), -1)
+        # x = self.fc(x)
+        # return x
+
 
 
 def resnet18(pretrained=False, **kwargs):
