@@ -25,6 +25,7 @@ with torch.no_grad():
     for i, (image, label) in enumerate(train_loader):
         image, label = image.cuda(), label.cuda()
         outs = model(image, label.size()[2:])
+        label[label == 2] = 0
 
         outs.append(label)
         outs.append(image)
