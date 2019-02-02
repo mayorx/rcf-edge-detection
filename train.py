@@ -21,7 +21,7 @@ def make_optim(model, lr):
 
 def save_ckpt(model, name):
     print('saving checkpoint ... {}'.format(name))
-    torch.save(model.state_dict(), os.path.join('ckpt', name))
+    torch.save(model.state_dict(), os.path.join('ckpt', '{}.pth'.format(name)))
 
 
 train_dataset = BSDS_RCFLoader(split="train")
