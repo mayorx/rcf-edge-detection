@@ -21,6 +21,8 @@ def make_optim(model, lr):
 
 def save_ckpt(model, name):
     print('saving checkpoint ... {}'.format(name))
+    if not os.path.isdir('ckpt'):
+        os.mkdir('ckpt')
     torch.save(model.state_dict(), os.path.join('ckpt', '{}.pth'.format(name)))
 
 
