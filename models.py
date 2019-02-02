@@ -186,14 +186,29 @@ class ResNet(nn.Module):
         so4_out = self.score_dsn4(R4)
         so5_out = self.score_dsn4(R5)
 
-        out1 = nn.UpsamplingBilinear2d(so1_out, size)
-        out2 = nn.UpsamplingBilinear2d(so2_out, size)
-        out3 = nn.UpsamplingBilinear2d(so3_out, size)
-        out4 = nn.UpsamplingBilinear2d(so4_out, size)
-        out5 = nn.UpsamplingBilinear2d(so5_out, size)
+        upsample = nn.UpsamplingBilinear2d(size)
+
+
+        out1 = upsample(so1_out)
+        out2 = upsample(so2_out)
+        out3 = upsample(so3_out)
+        out4 = upsample(so4_out)
+        out5 = upsample(so5_out)
+
+        # out3 = nn.UpsamplingBilinear2d(so3_out, size)
+        # out4 = nn.UpsamplingBilinear2d(so4_out, size)
+        # out5 = nn.UpsamplingBilinear2d(so5_out, size)
+
+        # print('C3 and R3', C3.size(), R3.size())
+        # print('C5 and R5', C5.size(), R5.size())
+        # print('s o out 1 3 5', so1_out.size(), so3_out.size(), so5_out.size())
+        # print(out1)
+        # print(out1.size(), out2.size(), out3.size(), out4.size(), out5.size())
 
         fuse = torch.cat([out1, out2, out3, out4, out5], dim=1)
         final_out = self.score_final(fuse)
+        # print('fuse ', fuse.size())
+        # print('final out', final_out.size())
 
         results = [out1, out2, out3, out4, out5, final_out]
         results = [torch.sigmoid(r) for r in results]
@@ -248,7 +263,7 @@ def resnet101(pretrained=False, **kwargs):
     """
     model = ResNet(Bottleneck, [3, 4, 23, 3], **kwargs)
     if pretrained:
-        model.load_state_dict(model_zoo.load_url(model_urls['resnet101']))
+        model.load_state_dict(model_zoo.load_url(model_urls['resnet101']), strict=False)
     return model
 
 
