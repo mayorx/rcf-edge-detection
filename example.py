@@ -51,13 +51,12 @@ with torch.no_grad():
 
         for result in outs:
             idx += 1
-            result = result.squeeze()
+            result = result.squeeze().detach().cpu().numpy()
             if len(result.shape) == 3:
                 result = result.transpose(1, 2, 0).astype(np.uint8)
                 result = result[:, :, [2, 1, 0]]
                 Image.fromarray(result).save(os.path.join(all_folder, '{}-img.jpg'.format(name)))
             else:
-                result = result.detach().cpu().numpy()
                 result = (result * 255).astype(np.uint8)
                 Image.fromarray(result).save(os.path.join(all_folder, '{}-{}.png'.format(name, idx)))
         Image.fromarray((fuse * 255).astype(np.uint8)).save(os.path.join(png_folder, '{}.png'.format(name)))
