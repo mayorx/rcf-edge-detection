@@ -74,7 +74,8 @@ class BSDS_RCFLoader(data.Dataset):
             img = prepare_image_cv2(img)
             return img, lb
         else:
-            img = np.array(Image.open(join(self.root, img_file)), dtype=np.float32)
-            img = prepare_image_PIL(img)
-            return img
+            original_img = np.array(cv2.imread(join(self.bsds_root, img_file)), dtype=np.float32)
+            img = prepare_image_cv2(original_img)
+            original_img = original_img.transpose(2, 0, 1)
+            return img, original_img
 
