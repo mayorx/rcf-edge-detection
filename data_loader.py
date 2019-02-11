@@ -29,10 +29,11 @@ class BSDS_RCFLoader(data.Dataset):
         self.root = root
         self.split = split
         self.transform = transform
+        self.bsds_root = join(root, 'HED-BSDS')
         if self.split == 'train':
             self.filelist = join(self.root, 'bsds_pascal_train_pair.lst')
         elif self.split == 'test':
-            self.filelist = join(self.root, 'test.lst')
+            self.filelist = join(self.bsds_root, 'test.lst')
         else:
             raise ValueError("Invalid split type!")
         with open(self.filelist, 'r') as f:
