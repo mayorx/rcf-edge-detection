@@ -60,6 +60,6 @@ with torch.no_grad():
                 result = (result * 255).astype(np.uint8)
                 Image.fromarray(result).save(os.path.join(all_folder, '{}-{}.png'.format(name, idx)))
         Image.fromarray((fuse * 255).astype(np.uint8)).save(os.path.join(png_folder, '{}.png'.format(name)))
-        io.savemat(os.path.join(mat_folder, '{}.mat'.format(name)), {'result': result})
+        io.savemat(os.path.join(mat_folder, '{}.mat'.format(name)), {'result': fuse})
     print('finished.')
 
