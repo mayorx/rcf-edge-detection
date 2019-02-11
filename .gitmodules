@@ -1,0 +1,3 @@
+[submodule "hed"]
+	path = hed
+	url = https://github.com/xwjabc/hed
