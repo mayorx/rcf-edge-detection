@@ -9,6 +9,9 @@ model = models.resnet101(pretrained=True).cuda()
 init_lr = 1e-2
 batch_size = 3
 
+# resume = 'ckpt/40001.pth'
+# checkpoint = torch.load(resume)
+# model.load_state_dict(checkpoint)
 
 def adjust_lr(init_lr, now_it, total_it):
     power = 0.9
@@ -20,7 +23,7 @@ def make_optim(model, lr):
     return optim
 
 def save_ckpt(model, name):
-    print('saving checkpoint ... {}'.format(name))
+    print('saving checkpoint ... {}'.format(name), flush=True)
     if not os.path.isdir('ckpt'):
         os.mkdir('ckpt')
     torch.save(model.state_dict(), os.path.join('ckpt', '{}.pth'.format(name)))
@@ -78,7 +81,7 @@ for epoch in range(total_epoch):
 
         avg_loss += float(total_loss)
         if cnt % print_cnt == 0:
-            print('[{}/{}] loss:{} avg_loss: {}'.format(cnt, total_iter, float(total_loss), avg_loss / print_cnt))
+            print('[{}/{}] loss:{} avg_loss: {}'.format(cnt, total_iter, float(total_loss), avg_loss / print_cnt), flush=True)
             avg_loss = 0
 
         if cnt % ckpt_cnt == 0:
