@@ -46,14 +46,14 @@ ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
 
 it may take several hours...
 
+* pretrained model will be available soon....
+
 * requirements:
+
   * matlab
   * hed [link](https://github.com/xwjabc/hed/tree/c8ed5abc4d2b6ad2862b0d61cf6184ce2cdf3cae)
-* you should modify ./hed/eval/eval_edge.m
-  * data dir ()
-  * gt dir (BSDS500 test set groent truth  .mat ext)
 
-* pretrained model will be available soon....
-* require matlab
-* [Structured Edge Detection Toolbox](https://github.com/pdollar/edges/)
-* edgesEvalDir.m
+* sh eval.sh
+
+  
+
