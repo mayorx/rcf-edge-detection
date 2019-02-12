@@ -47,3 +47,7 @@ it may take several hours...
   * path to your predicts should contain two folders: png and mat
 * sh eval.sh
 
+## related projects
+
+[rcf pytorch implementation](https://github.com/meteorshowers/RCF-pytorch)
+[rcf](https://github.com/yun-liu/rcf)
