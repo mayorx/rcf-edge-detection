@@ -15,6 +15,7 @@ variety of Richer Convolutional Features for Edge Detection (resnet101-based)
 ## results
 
 ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
+[pretrained model](https://drive.google.com/open?id=1v9QFjkKtWTwPC3vOoHsy3zi9cKk8BlWN)
 
 <img src="examples/100007-1.png" width="100" /><img src="examples/100007-2.png" width="100" /><img src="examples/100007-3.png" width="100" /><img src="examples/100007-4.png" width="100" /><img src="examples/100007-5.png" width="100" /><img src="examples/100007-6.png" width="100" /><img src="examples/100007-nms.png" width="100" /><img src="examples/100007-img.jpg" width="100" />
 
@@ -46,12 +47,10 @@ ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
 
 it may take several hours...
 
-* pretrained model will be available soon....
-
+* [pretrained model](https://drive.google.com/open?id=1v9QFjkKtWTwPC3vOoHsy3zi9cKk8BlWN)
 * requirements:
   * matlab
   * hed [link](https://github.com/xwjabc/hed/tree/c8ed5abc4d2b6ad2862b0d61cf6184ce2cdf3cae)
-
 * you should modify [path to your predicts](https://github.com/mayorx/rcf/blob/master/eval_edge.m#L3) and [path to ground truth (.mat)](https://github.com/mayorx/rcf/blob/master/eval_edge.m#L39)
 * sh eval.sh
 
