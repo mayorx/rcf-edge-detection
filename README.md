@@ -49,6 +49,6 @@ it may take several hours...
 
 ## related projects
 
-[rcf pytorch implementation](https://github.com/meteorshowers/RCF-pytorch)
-[rcf](https://github.com/yun-liu/rcf)
-[hed pytorch implementation](https://github.com/xwjabc/hed)
+* [rcf pytorch implementation](https://github.com/meteorshowers/RCF-pytorch)
+* [rcf](https://github.com/yun-liu/rcf)
+* [hed pytorch implementation](https://github.com/xwjabc/hed)
