@@ -23,7 +23,7 @@ except Exception:
     print('dir already exist....')
     pass
 
-model = models.resnet101(pretrained=True).cuda()
+model = models.resnet101(pretrained=False).cuda()
 model.eval()
 
 #resume..
