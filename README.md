@@ -1,4 +1,7 @@
+
+
 # rcf
+
 variety of Richer Convolutional Features for Edge Detection (resnet101-based)
 
 ## motivation
@@ -10,14 +13,14 @@ variety of Richer Convolutional Features for Edge Detection (resnet101-based)
 
 
 ## results
-现在模型才训练了 2%  （10000/490000）， 以下是一些临时结果。
-依次是layer1 ~ layer5的结果，综合结果， groundtruth，original image共8个图
 
-<img src="examples/0-1.png" width="100" /><img src="examples/0-2.png" width="100" /><img src="examples/0-3.png" width="100" /><img src="examples/0-4.png" width="100" /><img src="examples/0-5.png" width="100" /><img src="examples/0-6.png" width="100" /><img src="examples/0-7.png" width="100" /><img src="examples/0-img.jpg" width="100" />
+ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
 
-<img src="examples/1-1.png" width="100" /><img src="examples/1-2.png" width="100" /><img src="examples/1-3.png" width="100" /><img src="examples/1-4.png" width="100" /><img src="examples/1-5.png" width="100" /><img src="examples/1-6.png" width="100" /><img src="examples/1-7.png" width="100" /><img src="examples/1-img.jpg" width="100" />
+<img src="examples/100007-1.png" width="100" /><img src="examples/100007-2.png" width="100" /><img src="examples/100007-3.png" width="100" /><img src="examples/100007-4.png" width="100" /><img src="examples/100007-5.png" width="100" /><img src="examples/100007-6.png" width="100" /><img src="examples/100007-nms.png" width="100" /><img src="examples/100007-img.jpg" width="100" />
 
-<img src="examples/3-1.png" width="100" /><img src="examples/3-2.png" width="100" /><img src="examples/3-3.png" width="100" /><img src="examples/3-4.png" width="100" /><img src="examples/3-5.png" width="100" /><img src="examples/3-6.png" width="100" /><img src="examples/3-7.png" width="100" /><img src="examples/3-img.jpg" width="100" />
+<img src="examples/100039-1.png" width="100" /><img src="examples/100039-2.png" width="100" /><img src="examples/100039-3.png" width="100" /><img src="examples/100039-4.png" width="100" /><img src="examples/100039-5.png" width="100" /><img src="examples/100039-6.png" width="100" /><img src="examples/100039-nms.png" width="100" /><img src="examples/100039-img.jpg" width="100" />
+
+
 
 ## requirements
 
@@ -42,6 +45,14 @@ variety of Richer Convolutional Features for Edge Detection (resnet101-based)
 #### evaluate:
 
 it may take several hours...
+
+* requirements:
+  * matlab
+  * hed [link](https://github.com/xwjabc/hed/tree/c8ed5abc4d2b6ad2862b0d61cf6184ce2cdf3cae)
+* you should modify ./hed/eval/eval_edge.m
+  * data dir ()
+  * gt dir (BSDS500 test set groent truth  .mat ext)
+
 * pretrained model will be available soon....
 * require matlab
 * [Structured Edge Detection Toolbox](https://github.com/pdollar/edges/)
