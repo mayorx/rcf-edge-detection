@@ -49,10 +49,10 @@ it may take several hours...
 * pretrained model will be available soon....
 
 * requirements:
-
   * matlab
   * hed [link](https://github.com/xwjabc/hed/tree/c8ed5abc4d2b6ad2862b0d61cf6184ce2cdf3cae)
 
+* you should modify [path to your predicts](https://github.com/mayorx/rcf/blob/master/eval_edge.m#L3) and [path to ground truth (.mat)](https://github.com/mayorx/rcf/blob/master/eval_edge.m#L39)
 * sh eval.sh
 
   
