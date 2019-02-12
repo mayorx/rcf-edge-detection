@@ -71,10 +71,11 @@ for epoch in range(total_epoch):
         optim = make_optim(model, adjust_lr(init_lr, cnt, total_iter))
         image, label = image.cuda(), label.cuda()
         outs = model(image, label.size()[2:])
-        total_loss = 0
-        for each in outs:
-            loss = cross_entropy_loss_RCF(each, label)
-            total_loss += loss
+        # total_loss = 0
+        total_loss = cross_entropy_loss_RCF(outs[-1], label)
+        # for each in outs:
+        #     loss = cross_entropy_loss_RCF(each, label)
+        #     total_loss += loss
         optim.zero_grad()
         total_loss.backward()
         optim.step()
@@ -85,5 +86,5 @@ for epoch in range(total_epoch):
             avg_loss = 0
 
         if cnt % ckpt_cnt == 0:
-            save_ckpt(model, 'lr-{}-iter-{}'.format(init_lr, cnt))
+            save_ckpt(model, 'only-final-lr-{}-iter-{}'.format(init_lr, cnt))
 
