@@ -51,3 +51,4 @@ it may take several hours...
 
 [rcf pytorch implementation](https://github.com/meteorshowers/RCF-pytorch)
 [rcf](https://github.com/yun-liu/rcf)
+[hed pytorch implementation](https://github.com/xwjabc/hed)
