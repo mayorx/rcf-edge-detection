@@ -32,8 +32,8 @@ ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
 * put your data in 'data/HED-BSDS_PASCAL' (or make a soft link)
 * python train.py
 
-#### simple example:
-* python example.py
+#### test:
+* python test.py
 
 #### evaluate:
 
@@ -44,7 +44,6 @@ it may take several hours...
   * matlab
   * hed [link](https://github.com/xwjabc/hed/tree/c8ed5abc4d2b6ad2862b0d61cf6184ce2cdf3cae)
 * you should modify [path to your predicts](https://github.com/mayorx/rcf/blob/master/eval_edge.m#L3) and [path to ground truth (.mat)](https://github.com/mayorx/rcf/blob/master/eval_edge.m#L39)
+  * path to your predicts should contain two folders: png and mat
 * sh eval.sh
-
-  
 
