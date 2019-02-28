@@ -1,19 +1,26 @@
-
-
 # rcf
 
 variety of Richer Convolutional Features for Edge Detection (resnet101-based)
 
 ## results
 
+I test two type loss: last layer loss / sum up each layer's loss.[Detail here.](https://github.com/mayorx/rcf/pull/2/files)
+
+1. last layer only:
+ODS: **0.8135** , OIS: **0.831** on BSDS500 dataset
+[pretrained model, last layer only](https://drive.google.com/open?id=12JsCtpnMpnyauoceHiJoW94jQnH6MIr8)
+
+<img src="examples/final_layer/100007-1.png" width="100" /><img src="examples/final_layer/100007-2.png" width="100" /><img src="examples/final_layer/100007-3.png" width="100" /><img src="examples/final_layer/100007-4.png" width="100" /><img src="examples/final_layer/100007-5.png" width="100" /><img src="examples/final_layer/100007-6.png" width="100" /><img src="examples/final_layer/100007-nms.png" width="100" /><img src="examples/final_layer/100007-img.jpg" width="100" />
+
+<img src="examples/final_layer/100039-1.png" width="100" /><img src="examples/final_layer/100039-2.png" width="100" /><img src="examples/final_layer/100039-3.png" width="100" /><img src="examples/final_layer/100039-4.png" width="100" /><img src="examples/final_layer/100039-5.png" width="100" /><img src="examples/final_layer/100039-6.png" width="100" /><img src="examples/final_layer/100039-nms.png" width="100" /><img src="examples/final_layer/100039-img.jpg" width="100" />
+
+2. all layers:
 ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
-[pretrained model](https://drive.google.com/open?id=1v9QFjkKtWTwPC3vOoHsy3zi9cKk8BlWN)
+[pretrained model, all layers](https://drive.google.com/open?id=1v9QFjkKtWTwPC3vOoHsy3zi9cKk8BlWN)
 
-<img src="examples/100007-1.png" width="100" /><img src="examples/100007-2.png" width="100" /><img src="examples/100007-3.png" width="100" /><img src="examples/100007-4.png" width="100" /><img src="examples/100007-5.png" width="100" /><img src="examples/100007-6.png" width="100" /><img src="examples/100007-nms.png" width="100" /><img src="examples/100007-img.jpg" width="100" />
+<img src="examples/all_layer/100007-1.png" width="100" /><img src="examples/all_layer/100007-2.png" width="100" /><img src="examples/all_layer/100007-3.png" width="100" /><img src="examples/all_layer/100007-4.png" width="100" /><img src="examples/all_layer/100007-5.png" width="100" /><img src="examples/all_layer/100007-6.png" width="100" /><img src="examples/all_layer/100007-nms.png" width="100" /><img src="examples/all_layer/100007-img.jpg" width="100" />
 
-<img src="examples/100039-1.png" width="100" /><img src="examples/100039-2.png" width="100" /><img src="examples/100039-3.png" width="100" /><img src="examples/100039-4.png" width="100" /><img src="examples/100039-5.png" width="100" /><img src="examples/100039-6.png" width="100" /><img src="examples/100039-nms.png" width="100" /><img src="examples/100039-img.jpg" width="100" />
-
-
+<img src="examples/all_layer/100039-1.png" width="100" /><img src="examples/all_layer/100039-2.png" width="100" /><img src="examples/all_layer/100039-3.png" width="100" /><img src="examples/all_layer/100039-4.png" width="100" /><img src="examples/all_layer/100039-5.png" width="100" /><img src="examples/all_layer/100039-6.png" width="100" /><img src="examples/all_layer/100039-nms.png" width="100" /><img src="examples/all_layer/100039-img.jpg" width="100" />
 
 ## requirements
 
@@ -23,7 +30,7 @@ ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
     * http://mftp.mmcheng.net/liuyun/rcf/data/bsds_pascal_train_pair.lst
     * http://mftp.mmcheng.net/liuyun/rcf/data/HED-BSDS.tar.gz
     * http://mftp.mmcheng.net/liuyun/rcf/data/PASCAL.tar.gz
-* and other requiremnts... (cv2, numpy , etc.)
+* and other requirements... (cv2, numpy , etc.)
 
 ## usage
 
@@ -39,7 +46,7 @@ ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
 
 it may take several hours...
 
-* [pretrained model](https://drive.google.com/open?id=1v9QFjkKtWTwPC3vOoHsy3zi9cKk8BlWN)
+* [pretrained model, last layer only](https://drive.google.com/open?id=12JsCtpnMpnyauoceHiJoW94jQnH6MIr8) or [pretrained model, all layers](https://drive.google.com/open?id=1v9QFjkKtWTwPC3vOoHsy3zi9cKk8BlWN)
 * requirements:
   * matlab
   * hed [link](https://github.com/xwjabc/hed/tree/c8ed5abc4d2b6ad2862b0d61cf6184ce2cdf3cae)
