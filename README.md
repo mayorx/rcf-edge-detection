@@ -4,7 +4,8 @@ variety of Richer Convolutional Features for Edge Detection (resnet101-based)
 
 ## results
 
-I test two type loss: last layer loss / sum up each layer's loss.[Detail here.](https://github.com/mayorx/rcf/pull/2/files)
+I test two types of loss: last layer loss / sum up each layer's loss.
+[Detail here.](https://github.com/mayorx/rcf-edge-detection/pull/2/files?utf8=%E2%9C%93&diff=split)
 
 1. last layer only:
 ODS: **0.8135** , OIS: **0.831** on BSDS500 dataset
@@ -26,7 +27,7 @@ ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
 
 * pytorch 0.4.1
 * python 3.6.6
-* dataset(provide by [original rcf repo](https://github.com/yun-liu/rcf))
+* dataset(provide by [original repo](https://github.com/yun-liu/rcf))
     * http://mftp.mmcheng.net/liuyun/rcf/data/bsds_pascal_train_pair.lst
     * http://mftp.mmcheng.net/liuyun/rcf/data/HED-BSDS.tar.gz
     * http://mftp.mmcheng.net/liuyun/rcf/data/PASCAL.tar.gz
