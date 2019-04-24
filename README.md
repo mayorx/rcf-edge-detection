@@ -43,6 +43,9 @@ ODS: **0.796** , OIS: **0.814**  on BSDS500 dataset
 #### test:
 * python test.py
 
+#### a simple example:
+* python demo.py
+
 #### evaluate:
 
 it may take several hours...
